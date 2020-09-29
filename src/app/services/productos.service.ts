@@ -56,11 +56,17 @@ this.filtrarProductos( termino );
 
 
   private filtrarProductos(termino: string){
-    console.log(this.producto);
     this.productosFiltrado = [];
 
+    termino = termino.toLocaleLowerCase();
+
     this.producto.forEach( prod => {
-        if(prod.categoria.indexOf(termino) >= 0 || prod.titulo.indexOf(termino) >= 0){
+
+      const titulolower = prod.titulo.toLocaleLowerCase();
+
+        if(prod.categoria.indexOf(termino) >= 0 ||
+        titulolower.indexOf(termino) >= 0){
+
           this.productosFiltrado.push( prod );
         }
     });
